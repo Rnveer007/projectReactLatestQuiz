@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/header/header.jsx'
+import Footer from './components/footer/Footer.jsx'
+import { Outlet } from 'react-router-dom'
+
 
 function App() {
   return (
     <>
-      <div>
-        <h1 className='text-4xl'>Hello Wolrd</h1>
-      </div>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   )
 }
