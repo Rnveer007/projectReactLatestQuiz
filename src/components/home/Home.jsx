@@ -1,11 +1,25 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import dummy from "../../assets/images/img.png"
+import { useEffect } from 'react'
 
 
 
 function Home() {
     const [showCreateUserBox, setShowCreateUserBox] = useState(false)
+    const [userInput, setUserInput] = useState("");
+    const [latestUser, setLatestUser] = useState(null);
+    const [showUserName, setShowUserName] = useState(false)
+    const [showSuccesfullAlert, setShowSuccesFullAlert] = useState(false);
+    const [showRedAlert, setShowRedAlert] = useState (false)
+    // console.log(latestUser)
+
+    const [users, SetUsers] = useState(
+        localStorage.getItem('userData') !== null ? JSON.parse(localStorage.getItem("userData")) : []
+    )
+    useEffect(() => {
+        localStorage.setItem("userData", JSON.stringify(users))
+    }, [users]);
 
     const navigate = useNavigate();
 
@@ -15,12 +29,35 @@ function Home() {
     }
 
     function userCreated() {
+        if (!userInput) return;
+
         setShowCreateUserBox(false)
+        setShowUserName(true)
+        setShowSuccesFullAlert(true)
+
+        setTimeout(() => {
+            setShowSuccesFullAlert(false)
+        }, 1000);
+
+        const userObj = { id: Date.now(), name: userInput };
+        SetUsers([...users, userObj]);
+        setLatestUser(userObj)
+        setUserInput('')
     }
 
     function handleStart() {
+        if(latestUser === null){
+            setShowRedAlert(true);
 
-        navigate("/about");
+            setTimeout(() => {
+                setShowRedAlert(false)
+            }, 1000);
+        }
+        else
+        {
+            navigate("/about");
+        }
+
 
     }
     return (
@@ -28,9 +65,10 @@ function Home() {
             <div>
                 <div className='bg-black text-white flex justify-around py-8'>
                     <h1 className='text-3xl' >Logo</h1>
-                    <button onClick={addUser} className='border-2 px-5 py-1 cursor-pointer'>
+                    <button onClick={addUser} className={`border-2 px-5 py-1 cursor-pointer ${showUserName ? "hidden" : ""}`}>
                         Create User
                     </button>
+                    <h1 className={`${showUserName ? "" : "hidden"}`}>{latestUser?.name}</h1>
                 </div>
 
                 <div
@@ -41,6 +79,8 @@ function Home() {
                     <input
                         type="text"
                         placeholder="Enter Your Name"
+                        value={userInput} onChange={(e) => setUserInput(e.target.value)
+                        }
                         className="border-2 w-[400px] py-1 pl-6 capitalize"
                     />
 
@@ -49,12 +89,23 @@ function Home() {
                             className="bg-black text-white px-10 py-1 cursor-pointer">
                             Create
                         </button>
-                        <button
+                        <button onClick={() => setShowCreateUserBox(false)}
                             className="bg-red-800 text-white px-10 py-1 cursor-pointer">
                             Quit
                         </button>
                     </div>
                 </div>
+
+                <div
+                    className={`font-bold w-[300px] bg-green-600 text-center py-3 absolute right-170 top-50 ${showSuccesfullAlert ? "" : "hidden"}`}
+                >
+                    <h1>User Created Successfully</h1>
+                </div>
+
+                <div className={`text-white font-bold w-[300px] bg-red-600 text-center py-3 absolute right-180 top-50 ${showRedAlert ? "" : "hidden"}`} >
+                    <h1> User not found </h1>
+                </div>
+
 
 
                 <div className='bg-gray-500 h-[862px] flex justify-around items-center '>
