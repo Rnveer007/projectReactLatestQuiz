@@ -2,16 +2,20 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import dummy from "../../assets/images/img.png"
 import { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+
+// import setLatestUser from '../../App.jsx'
 
 
-
-function Home() {
+function Home({latestUser,setLatestUser}) {
+    // console.log(setLatestUser)  
     const [showCreateUserBox, setShowCreateUserBox] = useState(false)
     const [userInput, setUserInput] = useState("");
-    const [latestUser, setLatestUser] = useState(null);
-    const [showUserName, setShowUserName] = useState(false)
+    // const [latestUser, setLatestUser] = useState(null);
+    const [showUserName, setShowUserName] = useState(false);
     const [showSuccesfullAlert, setShowSuccesFullAlert] = useState(false);
-    const [showRedAlert, setShowRedAlert] = useState (false)
+    const [showRedAlert, setShowRedAlert] = useState(false);
+
     // console.log(latestUser)
 
     const [users, SetUsers] = useState(
@@ -46,15 +50,14 @@ function Home() {
     }
 
     function handleStart() {
-        if(latestUser === null){
+        if (latestUser === null) {
             setShowRedAlert(true);
 
             setTimeout(() => {
                 setShowRedAlert(false)
             }, 500);
         }
-        else
-        {
+        else {
             navigate("/about");
         }
 
@@ -65,6 +68,7 @@ function Home() {
             <div>
                 <div className='bg-black text-white flex justify-around py-8'>
                     <h1 className='text-3xl' >Logo</h1>
+
                     <button onClick={addUser} className={`border-2 px-5 py-1 cursor-pointer ${showUserName ? "hidden" : ""}`}>
                         Create User
                     </button>
