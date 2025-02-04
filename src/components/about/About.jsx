@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function About() {
     return (
@@ -7,14 +8,14 @@ function About() {
                 <div className='bg-black text-white flex justify-evenly py-8'>
                     <h1 className='text-3xl' >Logo</h1>
                     <ul className='flex'>
-                        <li className='px-3'>
-                            Home
+                        <li className='px-3 '>
+                            <NavLink to="/">Home</NavLink>
                         </li>
-                        <li className='px-3'>
-                            Quiz Section
+                        <li className='px-3 '>
+                            <NavLink to="">Quiz</NavLink>
                         </li>
-                        <li className='px-3'>
-                            Score
+                        <li className='px-3 '>
+                            <NavLink to="">Score</NavLink>
                         </li>
                     </ul>
                     <h2>User Name</h2>
@@ -22,13 +23,13 @@ function About() {
 
                 <div className='bg-gray-500 h-[863px] flex justify-center pt-36'>
                     <div >
-                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl '>
+                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl cursor-pointer  '>
                             MUSIC 
                         </button>
-                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl '>
+                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl  cursor-pointer '>
                             Modern ART 
                         </button>
-                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl '>
+                        <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl  cursor-pointer '>
                             CODING 
                         </button>
 

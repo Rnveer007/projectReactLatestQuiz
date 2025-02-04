@@ -1,17 +1,31 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './components/header/header.jsx'
-import Footer from './components/footer/Footer.jsx'
-import { Outlet } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import First from './components/first/First'
+import About from './components/about/About'
+import Home from './components/home/Home'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <First />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/about',
+        element: <About />
+      }
+    ]
+  }
+])
 
 function App() {
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
