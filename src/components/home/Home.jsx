@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 
 // import setLatestUser from '../../App.jsx'
 
-
 function Home({latestUser,setLatestUser}) {
     // console.log(setLatestUser)  
     const [showCreateUserBox, setShowCreateUserBox] = useState(false)

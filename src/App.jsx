@@ -5,7 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import First from './components/first/First.jsx'
 import About from './components/about/About.jsx'
 import Home from './components/home/Home.jsx'
+import Quiz from './components/quizSection/Quiz.jsx'
 // import { createContext } from 'react'
+
 function App() {
   const [latestUser, setLatestUser] = useState(null);
   const router = createBrowserRouter([
@@ -20,6 +22,10 @@ function App() {
         {
           path: '/about',
           element: <About />
+        },
+        {
+          path: '/quizSection',
+          element: <Quiz />
         }
       ]
     }

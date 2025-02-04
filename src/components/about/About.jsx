@@ -1,9 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function About({latestUser}) {
+     const navigate = useNavigate();
+    function handleSapQuiz() {
+        navigate("/quizSection");
 
-    return (
+    }
+    return (    
         <>
             <div>
                 <div className='bg-black text-white flex justify-evenly py-8'>
@@ -13,7 +18,7 @@ function About({latestUser}) {
                             <NavLink to="/">Home</NavLink>
                         </li>
                         <li className='px-3 '>
-                            <NavLink to="">Quiz</NavLink>
+                            <NavLink to="/quizSection">Quiz</NavLink>
                         </li>
                         <li className='px-3 '>
                             <NavLink to="">Score</NavLink>
@@ -30,7 +35,7 @@ function About({latestUser}) {
                         <button className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl  cursor-pointer '>
                             Modern ART 
                         </button>
-                        <button  className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl  cursor-pointer '>
+                        <button onClick={handleSapQuiz} className='block w-[500px] bg-blue-300 border-2 py-3 my-10 text-2xl  cursor-pointer '>
                             CODING 
                         </button>
  
