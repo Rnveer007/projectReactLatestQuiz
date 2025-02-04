@@ -37,7 +37,7 @@ function Home() {
 
         setTimeout(() => {
             setShowSuccesFullAlert(false)
-        }, 1000);
+        }, 500);
 
         const userObj = { id: Date.now(), name: userInput };
         SetUsers([...users, userObj]);
@@ -51,7 +51,7 @@ function Home() {
 
             setTimeout(() => {
                 setShowRedAlert(false)
-            }, 1000);
+            }, 500);
         }
         else
         {
