@@ -71,7 +71,7 @@ function Home() {
                     <button onClick={addUser} className={`border-2 px-5 py-1 font-bold cursor-pointer ${showUserName ? "hidden" : ""}`}>
                         Create User
                     </button>
-                    <h1 className={`${showUserName ? "" : "hidden"}`}>{latestUser?.name}</h1>
+                    <h1 className={`${showUserName ? "" : "hidden"}`}></h1>
                 </div>
 
                 <div
