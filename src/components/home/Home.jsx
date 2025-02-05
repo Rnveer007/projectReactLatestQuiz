@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import dummy from "../../assets/images/img.png"
 import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { instance } from '../../axiosConfig';
+// console.log(instance)
 
 // import setLatestUser from '../../App.jsx'
 
@@ -42,9 +44,16 @@ function Home() {
             setShowSuccesFullAlert(false)
         }, 500);
 
-        const userObj = { id: Date.now(), name: userInput };
+        // const userObj = { id: Date.now(), name: userInput };
         // SetUsers([...users, userObj]);
         // setLatestUser(userObj)
+        const response = instance.post('/user/save', {name :userInput})
+        if(response.status === 201 && response.data.message === 'User added') {
+            alert('User created successfully')
+        }
+        console.log(response.data)
+        // console.log(userObj);
+        
         setUserInput('')
     }
 
