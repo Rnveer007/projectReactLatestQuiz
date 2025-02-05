@@ -11,21 +11,11 @@ function About({latestUser}) {
     return (    
         <>
             <div>
-                <div className='bg-black text-white flex justify-evenly py-8'>
+                {/* <div className='bg-black text-white flex justify-evenly py-8'>
                     <h1 className='text-3xl' >Logo</h1>
-                    <ul className='flex'>
-                        <li className='px-3 '>
-                            <NavLink to="/">Home</NavLink>
-                        </li>
-                        <li className='px-3 '>
-                            <NavLink to="/quizSection">Quiz</NavLink>
-                        </li>
-                        <li className='px-3 '>
-                            <NavLink to="">Score</NavLink>
-                        </li>
-                    </ul>
+               
                     <h2>{latestUser?.name}</h2>
-                </div>
+                </div> */}
 
                 <div className='bg-gray-500 h-[863px] flex justify-center pt-36'>
                     <div >

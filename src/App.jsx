@@ -9,11 +9,11 @@ import Quiz from './components/quizSection/Quiz.jsx'
 // import { createContext } from 'react'
 
 function App() {
-  const [latestUser, setLatestUser] = useState(null);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <First latestUser={latestUser} setLatestUser={setLatestUser}/>,
+      element: <First/>,
       children: [
         {
           path: '/',

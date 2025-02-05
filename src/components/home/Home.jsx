@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 // import setLatestUser from '../../App.jsx'
 
-function Home({latestUser,setLatestUser}) {
+function Home() {
     // console.log(setLatestUser)  
     const [showCreateUserBox, setShowCreateUserBox] = useState(false)
     const [userInput, setUserInput] = useState("");
@@ -17,12 +17,12 @@ function Home({latestUser,setLatestUser}) {
 
     // console.log(latestUser)
 
-    const [users, SetUsers] = useState(
-        localStorage.getItem('userData') !== null ? JSON.parse(localStorage.getItem("userData")) : []
-    )
-    useEffect(() => {
-        localStorage.setItem("userData", JSON.stringify(users))
-    }, [users]);
+    // const [users, SetUsers] = useState(
+    //     localStorage.getItem('userData') !== null ? JSON.parse(localStorage.getItem("userData")) : []
+    // )
+    // useEffect(() => {
+    //     localStorage.setItem("userData", JSON.stringify(users))
+    // }, [users]);
 
     const navigate = useNavigate();
 
@@ -43,8 +43,8 @@ function Home({latestUser,setLatestUser}) {
         }, 500);
 
         const userObj = { id: Date.now(), name: userInput };
-        SetUsers([...users, userObj]);
-        setLatestUser(userObj)
+        // SetUsers([...users, userObj]);
+        // setLatestUser(userObj)
         setUserInput('')
     }
 
@@ -65,10 +65,10 @@ function Home({latestUser,setLatestUser}) {
     return (
         <>
             <div>
-                <div className='bg-black text-white flex justify-around py-8'>
-                    <h1 className='text-3xl' >Logo</h1>
+                <div className='bg-white text-black flex justify-around py-8'>
+                    <h1 className='text-3xl font-bold' >Logo</h1>
 
-                    <button onClick={addUser} className={`border-2 px-5 py-1 cursor-pointer ${showUserName ? "hidden" : ""}`}>
+                    <button onClick={addUser} className={`border-2 px-5 py-1 font-bold cursor-pointer ${showUserName ? "hidden" : ""}`}>
                         Create User
                     </button>
                     <h1 className={`${showUserName ? "" : "hidden"}`}>{latestUser?.name}</h1>
